@@ -1,0 +1,24 @@
+.page{
+  height: 200rpx;
+  display: flex;
+  border-bottom: #ccc solid 1px;
+}
+.jokeImage{
+  width: 300rpx;
+  height: 100%;
+}
+.tex{
+  flex: 1;
+  position: relative;
+}
+.title{
+  font-size: 30rpx;
+  padding-top: 30rpx;
+}
+.date{
+  font-size: 28rpx;
+  color: #ccc;
+  position: absolute;
+  right: 5rpx;
+  bottom: 5rpx;
+}

@@ -1,0 +1,48 @@
+.header{
+  height: 400rpx;
+  display: flex;
+  border-bottom: #ccc 1px solid;
+}
+.img{
+  width: 300rpx;
+  height: 100%;
+}
+.hotContainer{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.hot{
+  font-size: 35rpx;
+}
+.title{
+  flex: 1;
+}
+.commentName{
+  font-size: 30rpx;
+  color: #ccc;
+}
+.commentContainer{
+  margin-top: 10rpx;
+}
+.submitContainer{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px #ccc solid;
+  width: 100vw;
+  margin: 0;
+  height: 80rpx;
+}
+.inputComment{
+  width: 80%;
+  flex: 6;
+  height: 80rpx;
+}
+.submitButton{
+  flex: 1;
+  font-size: 30rpx;
+  background-color: green;
+  color: white;
+  border: 0px;
+  border-radius: 2px;
+}

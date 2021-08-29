@@ -1,0 +1,13 @@
+<view>
+  <view class="title">uu登录</view>
+  <van-cell-group>
+    <van-field label="账号" required bind:change="onAccount" size="large"></van-field>
+    <van-field label="密码" type="password" border="{{ false }}" required bind:change="onPassword" size="large"></van-field>
+  </van-cell-group>
+  <view class="cr">
+    <view bindtap="toRegister" class="tip">还没有注册？</view>
+  </view>
+  <view class="btn">
+    <van-button square type="primary" size="large">登录</van-button>
+  </view>
+</view>

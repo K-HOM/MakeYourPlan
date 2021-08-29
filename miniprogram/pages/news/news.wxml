@@ -1,0 +1,11 @@
+<view>
+  <view class="top">{{title}}</view>
+  <view class="cover">
+    <view class="date">日期：{{date}}</view>
+  </view>
+  <view>
+    <image class="img" src="{{image}}"></image>
+    <image class="img" src="{{image02}}"></image>
+    <image class="img" src="{{image03}}"></image>
+  </view>
+</view>

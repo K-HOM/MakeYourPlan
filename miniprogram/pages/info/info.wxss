@@ -1,0 +1,41 @@
+.log{
+  position: absolute;
+  right: 5px;
+  color: gray;
+}
+.uploadImage{
+  margin-top: 30rpx;
+  text-align: center;
+}
+.headIcon{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: teal;
+  margin:auto;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.value-class{
+  flex: none !important;
+}
+.lb{
+  position: absolute;
+  right: 0;
+  color: lightcoral;
+}
+.delImage{
+  margin-top: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 0;
+  top: 5rpx;
+}
+.van-checkbox{
+  margin-top: 40rpx;
+  word-wrap: break-word;
+}
+.selectBox{
+  position: relative;
+}

@@ -1,0 +1,19 @@
+.top{
+  font-size: 75rpx;
+  text-indent: 75rpx;
+  margin-bottom: 30rpx;
+}
+.date{
+  position: absolute;
+  right: 5rpx;
+  color: #bbbbbb;
+  font-size: 28rpx;
+}
+.cover{
+  position: relative;
+  height: 30rpx;
+  margin-bottom: 30rpx;
+}
+.img{
+  width: 100vw;
+}

@@ -1,0 +1,27 @@
+.title{
+  font-size: 60rpx;
+  padding-top: 30rpx;
+  margin-bottom: 100rpx;
+  text-align: center;
+  color: #bbb;
+}
+.tip{
+  font-size: 30rpx;
+  color: #ccc;
+  position: absolute;
+  right: 10rpx;
+}
+.cr{
+  margin-top: 10rpx;
+  position: relative;
+  height: 30rpx;
+  margin-bottom: 80rpx;
+}
+.btn{
+  width: 70vw;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-top: 0;
+  margin-right: 0;
+  margin: auto;
+}

@@ -1,0 +1,19 @@
+<view class="header">
+  <image src="{{detail.images}}" class="img"></image>
+  <view class="title">{{detail.text}}</view>
+</view>
+<view class="hotContainer">
+  <view class="hot">评论数：{{detail.comment}} 人气：{{detail.up}}</view>
+</view>
+<view class="commentContainer">
+  <view class="commentName">{{detail.top_comments_name}}</view>
+  <view>{{detail.top_comments_content}}</view>
+</view>
+<view wx:for="{{dbComment}}" wx:key="index">
+  <view class="commentName">{{item.name}}</view>
+  <view>{{item.comment}}</view>
+</view>
+<view class="submitContainer">
+  <input class="inputComment" type="text" placeholder="写点什么吧...." bindinput="commentText"/>
+  <button class="submitButton" bindtap="submitComment">提交</button>
+</view>

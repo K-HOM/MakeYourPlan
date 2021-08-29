@@ -1,0 +1,7 @@
+<view class="page" wx:for="{{joke}}" wx:key="index" catchtap="detail" data-handle="{{index}}">
+  <image class="jokeImage" src="{{item.thumbnail_pic_s}}"></image>
+  <view class="tex">
+    <view class="title">{{item.title}}</view>
+    <view class="date">{{item.date}}</view>
+  </view>
+</view>
