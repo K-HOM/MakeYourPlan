@@ -14,5 +14,5 @@
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   },
-  "navigationBarTitleText": ""
+  "navigationBarTitleText": "每日计划"
 }

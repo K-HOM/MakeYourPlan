@@ -1,7 +1,7 @@
 <view>
   <view class="main">
     <van-cell-group inset>
-      <van-field label="用户名" placeholder="请输入用户名" required size="large" bind:change="inputUserName" error-message="{{userNameError}}"/>
+      <van-field label="账号" placeholder="请输入注册账号" required size="large" bind:change="inputUserName" error-message="{{userNameError}}"/>
       <van-field label="密码" placeholder="请输入密码" required type="password" size="large" bind:change="inputPassword"/>
       <van-field label="确认密码" placeholder="请再次输入密码" type="password" required size="large" bind:change="cfPassword" error-message="{{passwordError}}"/>
       <van-field label="手机号" placeholder="请输入手机号码" clearable type="number" required size="large" bind:change="inputPhone" maxlength="11"/>

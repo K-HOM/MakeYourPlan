@@ -25,16 +25,16 @@
   color: lightcoral;
 }
 .delImage{
-  margin-top: 30rpx;
+  margin-top: -60rpx;
   width: 40rpx;
   height: 40rpx;
   position: absolute;
-  right: 0;
-  top: 5rpx;
+  right: 20rpx;
 }
 .van-checkbox{
   margin-top: 40rpx;
-  word-wrap: break-word;
+  height: 80rpx;
+  font-size: 38rpx;
 }
 .selectBox{
   position: relative;

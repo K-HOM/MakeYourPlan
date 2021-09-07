@@ -8,6 +8,6 @@
     <view bindtap="toRegister" class="tip">还没有注册？</view>
   </view>
   <view class="btn">
-    <van-button square type="primary" size="large">登录</van-button>
+    <van-button square type="primary" size="large" bind:click="login">登录</van-button>
   </view>
 </view>

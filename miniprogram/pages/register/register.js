@@ -1,4 +1,5 @@
 // pages/register/register.js
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
     ifConfirm: true,
     passwordError: '',
     userNameError: '',
+    reject: '',
     countNumber: 60
   },
 
@@ -65,6 +67,56 @@ Page({
         })
       }
     }, 1000)
+  },
+
+  register: function() {
+    try {
+      db.collection('login').where({
+        loginAccount: this.data.userName
+      }).get().then(res => {
+        console.log(res.data.length)
+        if(res.data.length > 0) {
+          this.setData({
+            userNameError: '账号已被注册',
+          });
+        } else {
+          this.setData({
+            reject: 0
+          })
+        }
+        
+       
+      }).catch(err => {
+        console.log(err)
+      })
+      setTimeout(() => {
+        if(this.data.reject === 0) {
+          db.collection('login').add({
+            data: {
+              loginAccount: this.data.userName,
+              loginPassword: this.data.userPassword,
+              phone: this.data.userPhone,
+              plan: [],
+              planDate: []
+            }
+          }).then(res => {
+            wx.showToast({
+              title: '注册成功',
+              icon: 'success',
+              duration: 3000
+            })
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 0,
+              })
+            },3000)
+          }).catch()
+        }
+      }, 1000)
+    } catch (error) {
+      
+    }
+   
   },
 
   /**

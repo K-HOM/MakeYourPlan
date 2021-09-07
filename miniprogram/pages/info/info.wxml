@@ -1,22 +1,28 @@
 <view class="log">
-  <text wx:if="{{logstatus !== true}}" bindtap="toLogin">登录</text>
-  <text wx:else>退出</text>
+  <text wx:if="{{ifLogin.length === 0}}" bindtap="toLogin">登录</text>
+  <text wx:else bindtap="toLogout">退出</text>
 </view>
 <image src="{{imageSrc}}" class="headIcon"></image>
 <view bindtap="uploadImage" class="uploadImage" wx:if="{{headImage}}">上传头像</view>
-<van-field placeholder="请输入计划名称" size="large" bind:change="inputPlan" border="{{ false }}" focus="true"/>
-<van-cell title="设定计划日期" value="{{ date }}" bind:click="onDisplay" is-link size="large"/>
+<van-field placeholder="写点计划吧...." size="large" bind:change="inputPlan" border="{{ false }}" focus="true" id="clearInput" required/>
+<van-cell title="设定计划日期" value="{{ date }}" bind:click="onDisplay" is-link size="large" required/>
 <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
-<van-button type="warning" bind:click="addPlan">添加计划</van-button>
-<van-checkbox-group value="{{checked}}" bind:change="chooseBox" wx:for="{{setPlan}}" wx:key="index" class="selectBox">
-  <van-checkbox name="{{index}}">
-    {{item}} 
-  </van-checkbox>
-  <label class="lb">
-      目标日期：{{setDate[index]}}
-  </label>
-  <image src="../../images/del.png" class="delImage" bindtap="delBox"></image>
-</van-checkbox-group>
-
+<view>
+  <van-button type="warning" bind:click="addPlan" style="width: 50%;display: inline-block;">添加计划</van-button>
+  <van-button type="danger" style="width: 50%;display: inline-block;" bind:click="uploadData">保存变更</van-button>
+</view>
+<scroll-view scroll-y="true" style="height: 590rpx;width: 100vw;" class="selectBox">
+  <van-checkbox-group value="{{checked}}" bind:change="chooseBox" wx:for="{{setPlan}}" wx:key="index" >
+      <van-checkbox name="{{index}}" checked-color="#cceeff" shape="square">
+        {{item}} 
+      </van-checkbox>
+      <label class="lb">
+          目标日期：{{setDate[index]}}
+      </label>
+      <view class="imageBox">
+        <image src="../../images/del.png" class="delImage" bindtap="delBox" data-select="{{index}}"></image>
+      </view>
+  </van-checkbox-group>
+</scroll-view>
 
 

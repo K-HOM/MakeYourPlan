@@ -1,11 +1,13 @@
 // pages/login/login.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    account: '',
+    password: ''
   },
 
   toRegister: function() {
@@ -14,11 +16,42 @@ Page({
     })
   },
 
+  onAccount: function(event) {
+    this.setData({
+      account: event.detail
+    })
+  },
+
+  onPassword: function(event) {
+    this.setData({
+      password: event.detail
+    })
+  },
+
+  login: function() {
+    let flag;
+    db.collection('login').where({
+      loginAccount: this.data.account,
+      loginPassword: this.data.password
+    }).get().then(res => {
+      console.log(res)
+     if(res.data[0] !== undefined){
+       let pages = getCurrentPages();
+       let prevPage =pages[pages.length - 2];
+       prevPage.setData({
+         ifLogin: this.data.account,
+         userId:  res.data[0]._id
+       })
+       wx.navigateBack()
+     }}).catch();
+    
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+                                                                                  
   },
 
   /**

@@ -7,11 +7,12 @@ Page({
    */
   data: {
     headImage: true,
-    logstatus: false,
+    ifLogin: '',
     openId: '',
     images: [],
     imageSrc: '',
     fileIDs: [],
+    userId: '',
     userName: '',
     date: '',
     value: '',
@@ -20,8 +21,22 @@ Page({
     setPlan: [],
     setDate: [],
     result: [],
-    checked: [],
+    checked: 'false',
     show: false
+  },
+
+  toLogout: function() {
+    this.setData({
+      ifLogin: ''
+    })
+    wx.showToast({
+      title: '您已安全退出',
+      icon: 'success'
+    })
+    this.setData({
+      setPlan: [],
+      setDate: []
+    })
   },
 
   inputPlan: function(event) {
@@ -35,13 +50,12 @@ Page({
     let plan = this.data.setPlan;
     let pn = this.data.planName;
     let userdate = this.data.date;
-    if(plan.indexOf(pn) === -1) {
+    if(plan.indexOf(pn) === -1 && pn !== '' && userdate !== '') {
       this.setData({
         setPlan: this.data.setPlan.concat(pn),
         setDate: this.data.setDate.concat(userdate)
       })
     }
-   
   },
 
   toLogin: function() {
@@ -93,37 +107,17 @@ Page({
 
   },
 
-  delBox: function() {
-    let date = this.data.setDate;
-    let plan = this.data.setPlan;
-    let select = this.data.result;
-    let sp = [];
-    let sd = [];
-    let arr = [];
-    for(let i=0; i < select.length; i++) {
-      arr.push(plan.indexOf(select[i].toString()))
-    };
-    const pl = plan.length;
-    const len = arr.length;
-    for(let i=0; i < len; i++) {
-      let k = i
-      if(i > 0) {
-        plan.splice(arr[k]-i,1);
-        date.splice(arr[k]-i,1);
-        this.data.setPlan = [];
-        this.setData({
-          setPlan: plan
-        })
-      } else {
-        plan.splice(arr[k],1);
-        date.splice(arr[k],1);
-        this.data.setPlan = [];
-        this.setData({
-          setPlan: plan
-        })
-      }
-      console.log(plan,date)
-    };
+  delBox: function(event) {
+    let index = event.currentTarget.dataset;
+    let sp = this.data.setPlan;
+    let sd = this.data.setDate;
+    sp.splice(index.select, 1);
+    sd.splice(index.select, 1);
+    this.setData({
+      setPlan: sp,
+      setDate: sd
+    })
+   
   },
 
   uploadImage: function() {
@@ -171,6 +165,24 @@ Page({
     })
   },
 
+  // 上传数据
+  uploadData: function() {
+        let data = this.data.setPlan;
+        let date = this.data.setDate;
+        db.collection('login').doc(this.data.userId).update({
+          data: {
+            plan: data,
+            planDate: date
+          }
+        }).then().catch(err => {
+          console.log(err)
+        })
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success'
+        })                                                                          
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -205,6 +217,24 @@ Page({
     wx.login({
       timeout: 0,
     })
+    // 登录后渲染页面
+    const shouldRender = setInterval(() => {
+      if(this.data.userId.length > 1) {
+        db.collection('login').where({
+          _id: this.data.userId
+        }).get().then(res => {
+          this.setData({
+            setPlan: res.data[0].plan,
+            setDate: res.data[0].planDate
+          })
+        }).catch(err => {
+          console.log(err)
+        });
+        clearInterval(shouldRender);
+      }
+    },1000)
+  
+
   },
 
   chooseBox: function(event) {
@@ -225,7 +255,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
